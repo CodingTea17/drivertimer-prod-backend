@@ -1,12 +1,12 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-# Store.destroy_all
+Store.destroy_all
 # Driver.destroy_all
 # Message.destroy_all
 
-include Nokogiri
-include HTTParty
+require 'nokogiri'
+require 'httparty'
 
 class Scrapper
   attr_accessor :parse_page
