@@ -12,7 +12,8 @@ class Scrapper
   attr_accessor :parse_page
 
   def initialize
-    doc = HTTParty.get("http://order.pizzaguys.com/zgrid/themes/13091/portal/index.jsp")
+    doc = HTTParty.get("https://www.google.com/")
+    puts doc
     @parse_page ||= Nokogiri::HTML(doc)
   end
 
