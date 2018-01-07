@@ -12,8 +12,7 @@ class Scrapper
   attr_accessor :parse_page
 
   def initialize
-    doc = HTTParty.get("http://order.pizzaguys.com/zgrid/themes/13091/portal/index.jsp")
-    puts doc
+    doc = HTTParty.get("https://evening-temple-27196.herokuapp.com/")
     @parse_page ||= Nokogiri::HTML(doc)
   end
 
@@ -21,19 +20,33 @@ class Scrapper
     parse_page.css('br').each{ |br| br.replace(" ") }
   end
 
-  def get_store_numbers
-    parse_page.css('.portal-store-order').map { |store_number| store_number['href'].to_str.match(/[0-9]{3}/)[0].to_i }
-  end
+  # def get_store_numbers
+  #   parse_page.css('.portal-store-order').map { |store_number| store_number['href'].to_str.match(/[0-9]{3}/)[0].to_i }
+  # end
 
-  def get_addresses
-    self.parse_out_br
-    parse_page.css('.portal-store-address').map { |address| address.text }
+  # def get_addresses
+  #   self.parse_out_br
+  #   parse_page.css('.portal-store-address').map { |address| address.text }
+  # end
+
+  # def get_store_numbers
+  #   parse_page.css('a').map { |store_number| store_number['href'].to_str.match(/[0-9]{3}/)[0].to_i }
+  # end
+
+  def cast_magic
+    # self.parse_out_br
+    parse_page.css('a').map do |address|
+      addresses.push(address.text.gsub(/([0-9]{3}:))/, '')
+      store_numbers.push(store_number['href'].to_str.match(/[0-9]{3}/)[0].to_i)
+    end
   end
 end
 
 scrapper = Scrapper.new
-addresses = scrapper.get_addresses
-store_numbers = scrapper.get_store_numbers
+addresses = []
+store_numbers = []
+
+scrapper.cast_magic
 
 store_numbers.each_with_index do |store_number, index|
   Store.create!(:store_number => store_number, :address => addresses[index], :password => "password")
