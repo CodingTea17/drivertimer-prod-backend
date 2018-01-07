@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:c8545507bbdedf9983397ddb916b71e0@soldierfish.redistogo.com:10079/
+  url: redis://redistogo:ad0906634b9f83b070275e13de0d6106@soldierfish.redistogo.com:10071/
   channel_prefix: backend-driver-timer_production
