@@ -1,0 +1,10 @@
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: redis://redistogo:c8545507bbdedf9983397ddb916b71e0@soldierfish.redistogo.com:10079/
+  channel_prefix: backend-driver-timer_production
