@@ -36,7 +36,7 @@ class Scrapper
   def cast_magic
     # self.parse_out_br
     parse_page.css('a').map do |address|
-      addresses.push(address.text.gsub(/([0-9]{3}:))/, '')
+      addresses.push(address.text.gsub(/([0-9]{3}:))/, ''))
       store_numbers.push(store_number['href'].to_str.match(/[0-9]{3}/)[0].to_i)
     end
   end
