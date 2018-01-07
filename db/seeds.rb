@@ -2,8 +2,8 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 Store.destroy_all
-Driver.destroy_all
-Message.destroy_all
+# Driver.destroy_all
+# Message.destroy_all
 
 require 'nokogiri'
 require 'httparty'
