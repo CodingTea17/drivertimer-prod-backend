@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:cd172697e3c6cda452c39da90fd0873a@soldierfish.redistogo.com:10090/
+  url: <%= ENV.fetch("REDISTOGO_URL") %>
   channel_prefix: backend-driver-timer_production
