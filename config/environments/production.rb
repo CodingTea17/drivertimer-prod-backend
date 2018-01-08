@@ -36,7 +36,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://drivertimer-api.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = ['https://drivertimer-api.herokuapp.com', 'http://drivertimer-api.herokuapp.com', 'https://evening-temple-27196.herokuapp.com', 'http://evening-temple-27196.herokuapp.com']
+  config.action_cable.allowed_request_origins = ['https://drivertimer-api.herokuapp.com', 'http://drivertimer-api.herokuapp.com', 'https://drivertimer.herokuapp.com', 'http://drivertimer.herokuapp.com']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
