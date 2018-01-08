@@ -3,7 +3,7 @@ class Api::InboundMessagesController < ApplicationController
     driver_phone_number = params["msisdn"]
     driver = Driver.where(:phone_number => driver_phone_number).first
 
-    @new_message = driver.messages.new(:from => driver_phone_number,:text => params["text"],:message_id => params["messageId"],:message_timestamp => params["message-timestamp"])
+    @new_message = Message.new(:from => driver_phone_number,:text => params["text"],:message_id => params["messageId"],:message_timestamp => params["message-timestamp"], :driver_id => driver.id)
 
     if @new_message.save!
       ActionCable.server.broadcast "store-#{driver.store.store_number}-driver-#{driver.id}:messages",
