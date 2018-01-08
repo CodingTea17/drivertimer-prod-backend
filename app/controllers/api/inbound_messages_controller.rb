@@ -2,8 +2,8 @@ class Api::InboundMessagesController < ApplicationController
   def create
     driver_phone_number = params["msisdn"]
     driver = Driver.where(:phone_number => driver_phone_number).first
-
-    @new_message = Message.new(:from => driver_phone_number,:text => params["text"],:message_id => params["messageId"],:message_timestamp => params["message-timestamp"], :driver_id => driver.id)
+    p "#{driver}"
+    @new_message = driver.messages.new(:from => driver_phone_number,:text => params["text"],:message_id => params["messageId"],:message_timestamp => params["message-timestamp"])
 
     if @new_message.save!
       ActionCable.server.broadcast "store-#{driver.store.store_number}-driver-#{driver.id}:messages",
@@ -17,7 +17,12 @@ class Api::InboundMessagesController < ApplicationController
       #   # No render but still let server know it's all good
       #   head :ok
       # end
+    else
+      # temp patch to error that's slowing the whole thing down...
+      # this tells the nexmo server to let it go
+      head :ok
     end
+
   end
 
 private
