@@ -42,7 +42,7 @@ Driver.destroy_all
 stores = Store.all
 
 stores.each do |store|
-  store.driver.create!(:name => "Test Driver", :phone_number => "15555555555")
+  store.drivers.create!(:name => "Test Driver", :phone_number => "15555555555")
 end
 
 # home_store = Store.where(:store_number => 177).first
