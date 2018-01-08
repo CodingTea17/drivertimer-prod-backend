@@ -39,13 +39,13 @@ Driver.destroy_all
 
 # p "#{Store.all.length} stores created"
 
-stores = Store.all
-
-stores.each do |store|
-  store.drivers.create!(:name => "Test Driver", :phone_number => "15555555555")
-end
+# stores = Store.all
+#
+# stores.each do |store|
+#   store.drivers.create!(:name => "Test Driver", :phone_number => "15555555555")
+# end
 
 # home_store = Store.where(:store_number => 177).first
 # home_store.drivers.create!(:name => "Dawson", :phone_number => "19715702525")
 
-p "#{Driver.all.length} drivers created"
+# p "#{Driver.all.length} drivers created"

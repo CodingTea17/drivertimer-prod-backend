@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'evening-temple-27196.herokuapp.com'
+    origins 'drivertimer.herokuapp.com'
 
     resource '*',
       headers: :any,
