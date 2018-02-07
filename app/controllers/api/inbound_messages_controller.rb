@@ -1,9 +1,7 @@
 class Api::InboundMessagesController < ApplicationController
   def create
-    puts "hi"
     driver_phone_number = params["msisdn"]
     driver = Driver.where(:phone_number => driver_phone_number).first
-    puts driver
     if driver
       @new_message = driver.messages.new(:from => driver_phone_number,:text => params["text"],:message_id => params["messageId"],:message_timestamp => params["message-timestamp"])
 
